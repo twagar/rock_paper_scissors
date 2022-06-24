@@ -3,7 +3,9 @@
 // Game Variables
 let computerScore = 0
 let playerScore = 0
-let playerSelection;
+const playerSelection = prompt("Enter your answer here.");
+const computerSelection = computerPlay();
+
 
 //Generate a random number between 0 - 2
 // 0, rock. 1, paper. 2, scissors.
@@ -19,12 +21,12 @@ function computerPlay() {
     }
 }
 
-//LOGic: COMPARISON. SCORE TRACKING, RETURN RESULTS
+//LOGiC: COMPARISON. SCORE TRACKING, RETURN RESULTS
 function playRound(playerSelection, computerSelection) {
     if(playerSelection === "rock" && computerSelection === "rock") {
         return "Tie! You both chose Rock!";
     } else if (playerSelection === "rock" && computerSelection === "paper") {
-        commputerScore +=1;
+        computerScore +=1;
         return "You've lost, the computer chose Paper.";
     } else if (playerSelection === "rock" && computerSelection === "scissors"){
         playerScore += 1;
@@ -50,3 +52,5 @@ function playRound(playerSelection, computerSelection) {
     }
     
 }
+
+console.log(playRound(playerSelection, computerSelection))
