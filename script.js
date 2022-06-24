@@ -56,14 +56,23 @@ function playRound(playerSelection, computerSelection) {
 function game() {
    
     for (let i = 0; i <= 5; ++i) {
-    let computerSelection = computerPlay();
-    let playerSelection = prompt("Choose Rock, Paper, or Scissors");
-    console.log(playRound(playerSelection, computerSelection));
-    console.log("your score = " + playerScore);
-    console.log("Computer's score = " +computerScore);
-    
+    const computerSelection = computerPlay();
+    const playerSelection = prompt("Choose Rock, Paper, or Scissors");
+    let result = playRound(playerSelection, computerSelection);
+    console.log(`You chose ${playerSelection}`);
+    console.log(`The computer chose ${computerSelection}`);
+    console.log(result);
+    console.log(`Your score is ${playerScore}, Computer's score is ${computerScore}`);
+    } 
+    if (playerScore > computerScore) {
+        console.log("You win! " + playerScore + " to " + computerScore + ".");
+    }   else if (playerScore < computerScore) {
+        console.log("You lose " + computerScore + " to " + playerScore + ".");
+    }   else {
+        console.log("Tie game! You both won the same number of rounds.");
+    }
 }
-}
+
 console.log(playRound(playerSelection, computerSelection))
 
 game()
