@@ -30,36 +30,34 @@ function tieWin() {
     tieAlert.textContent = "# of tie rounds: " + tieNum;
 }
 
-//LOGiC: COMPARISON. SCORE TRACKING, RETURN RESULTS
+//Constants instead of string literals
+const ROCK = "rock";
+const PAPER = "paper";
+const SCISSORS = "scissors";
+
+//Logic: simple comparison with functions to keep track of score.
 function playRound(playerSelection, computerSelection) {
     if(playerSelection ===  computerSelection) {
-        return "Tie! You both chose Rock!";
-    } else if (playerSelection === "rock" && computerSelection === "paper") {
-        computerScore +=1;
-        return "You've lost, the computer chose Paper.";
-    } else if (playerSelection === "rock" && computerSelection === "scissors"){
-        playerScore += 1;
-        return "Winner! The computer chose Scissors";
-    } else if (playerSelection === "paper" && computerSelection === "paper") {
-        return "Tie! Both you and the computer chose Paper.";
-    } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        computerScore +=1;
-        return "Loser! The computer chose Scissors! Snip snip.";
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
-        playerScore += 1;
-        return "You win! Paper beats rock. Get smothered.";
-    } else if (playerSelection === "scissors" && computerSelection) {
-        return "Tie! Both you and the computer chose Scissors."
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        computerScore += 1;
-        return "Loser! Scissors loses to Rock!"
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        playerScore += 1;
-        return "Winner! Scissors defeats Paper!"
-    } else {
-        return "Bad Input";
+        tieWin();
+    } else if (playerSelection === ROCK) {
+        if (computerSelection === SCISSORS){
+            userWin();
+        } else { 
+            compWin();
+        }
+    } else if (playerSelection === PAPER) {
+        if (computerSelection === ROCK) {
+            userWin();
+        } else {
+            compWin();
+        }
+    } else if {playerSelection === SCISSORS} {
+        if (computerSelection === PAPER) {
+            userWin();
+        } else {
+            computerWin();
+        }
     }
-    
 }
 
 //function game() {
