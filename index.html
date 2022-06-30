@@ -1,12 +1,23 @@
-s<!DOCTYPE html>
+<!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <button id="rockButton"></button>
-        <button id="paperButton"></button>
-        <button id="scissorsButton"></button>
+        <h4>ROCK PAPER SCISSORS</h4>
+        <div id="bod">
+        <div id="btnContainer">
+        <button id="rockBtn">Rock</button>
+        <button id="paperBtn">Paper</button>
+        <button id="scissorsBtn">Scissors</button>
+        </div>
+        <div id="result">
+            <p id="pScore">Your current score is: 0</p>
+            <p id="cScore">Computer score is: 0</p>
+            <p id="rTie">Tie round(s): 0</p>
+            <p id="finishText">Play!</p>
+        </div>
+    </div>
     </body>

@@ -1,39 +1,75 @@
 //Begin script. 
+const rockB = document.getElementById("rockBtn");
+const paperB = document.getElementById("paperBtn");
+const scissorsB = document.getElementById("scissorsBtn");
+const playerScore = document.getElementById("pScore");
+const computerScore = document.getElementById("cScore");
+const tieAlert = document.getElementById("rTie");
+const finishTxt = document.getElementById("finishText");
 
 // Game Variables
-let computerScore = 0
-let playerScore = 0
-const playerSelection = prompt("Enter your answer here.");
-const computerSelection = computerPlay();
+const PAPER = "paper";
+const SCISSORS = "scissors";
+const ROCK = "rock";
+const sign = [ROCK, PAPER, SCISSORS];
+let compWinNum = 0;
+let playerWinNum = 0;
+let tieNum = 0; 
 
+rockBtn.addEventListener("click", function(){
+    let playerSelection = "rock";
+    let computerSelection = computerPlay();
+    playRound(playerSelection,computerSelection);
+});
+paperBtn.addEventListener("click", function() {
+    let playerSelection = "paper";
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+})
+
+scissorsBtn.addEventListener("click", function () {
+    let playerSelection = "scissors";
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+})
+
+//Event listener, read the sign from the ID of clicked button.
+//function clickListen(event) {
+//    if (event.target.tagName !== "BUTTON") {
+//        return;
+//   }
+//    const playerSelection = event.target.id;
+//    console.log(event.target.id)
+//    const computerSelection = computerPlay();
+//    playRound(playerSelection,computerSelection);
+//}
+//document.getElementById("btnContainer").addEventListener("click", clickListen);
+//Constants instead of string literals, if errors are to occur it is easier to troubleshoot.
 
 //Generate a random number between 0 - 2
 // 0, rock. 1, paper. 2, scissors.
-const sign
 function computerPlay() {
     let choice = Math.floor(Math.random() * 3)
     return sign[choice];
 }
 //Misc. functions for text labeling
-function userWin {
-    ++playerWinNum;
-    playerScore.textContent = "Your current score is: " +playerWinNum;
+function userWin() {
+    playerWinNum++;
+    playerScore.textContent = "Your current score is: " + playerWinNum;
+    finishTxt.textContent = "Play!";
 }
 
 function compWin() {
-    ++compWinNumm;
-    computerScore.textContent = "The computer's score is: " + compWinNum;
+    compWinNum++;
+    computerScore.textContent = "computer's score is: " + compWinNum;
+    finishTxt.textContent = "Play!";
 }
 
 function tieWin() {
-    ++tieNum
+    tieNum++;
     tieAlert.textContent = "# of tie rounds: " + tieNum;
+    finishTxt.textContent = "Play!";
 }
-
-//Constants instead of string literals
-const ROCK = "rock";
-const PAPER = "paper";
-const SCISSORS = "scissors";
 
 //Logic: simple comparison with functions to keep track of score.
 function playRound(playerSelection, computerSelection) {
@@ -51,12 +87,18 @@ function playRound(playerSelection, computerSelection) {
         } else {
             compWin();
         }
-    } else if {playerSelection === SCISSORS} {
+    } else if (playerSelection === SCISSORS) {
         if (computerSelection === PAPER) {
             userWin();
         } else {
-            computerWin();
+            compWin();
         }
+    } if (compWinNum === 5) {
+        finishTxt.textContent = "Loser! Try again.";
+        reset();
+    } else if (playerWinNum === 5) {
+        finishTxt.textContent = "You are the winner!";
+        reset();
     }
 }
 
@@ -80,6 +122,16 @@ function playRound(playerSelection, computerSelection) {
 //    }
 //}
 
-console.log(playRound(playerSelection, computerSelection))
+//console.log(playRound(playerSelection, computerSelection))
 
-game()
+// game()
+
+//Helper Function(s)
+function reset() {
+    playerScore.textContent = "Your score is: 0";
+    computerScore.textContent = "Computer score is: 0";
+    tieAlert.textContent = "Tie round(s): 0";
+    playerWinNum = 0;
+    compWinNum = 0;
+    tieNum = 0;
+}
